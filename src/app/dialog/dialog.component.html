@@ -1,0 +1,58 @@
+<h1 mat-dialog-title>Fill this Details</h1>
+<div mat-dialog-content>
+
+    <form [formGroup]="productForm">
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Employee Name</mat-label>
+            <input formControlName="employeeName" matInput placeholder="Name of the Person">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Employee Email</mat-label>
+            <input formControlName="employeeNumber" matInput type="email" placeholder="Enter email id"/>
+        </mat-form-field>
+       
+        <mat-form-field appearance="outline">
+            <mat-label>Employee Number</mat-label>
+             <!-- formControlName="tableNumber" placeholder="Select the Table no." -->
+                <span matTextPrefix  formControlName="tableNumber" placeholder="Select the Table no.">+91 &nbsp;</span>
+                <input type="tel" matInput placeholder="946-000-1234">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+
+       
+        </mat-form-field>
+    
+        <mat-radio-group formControlName="kind" class="example-radio-group">
+        <mat-radio-button class="example-radio-button" *ngFor="let fresh of freshnessList" [value]="fresh">
+            {{fresh}}    
+        </mat-radio-button>
+        </mat-radio-group>
+    
+        <mat-form-field appearance="outline">
+            <mat-label>Project Head</mat-label>
+            <input formControlName="employeerName" matInput placeholder="Name of the Person">
+
+                    
+          
+
+        </mat-form-field>
+       
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput #message maxlength="256" placeholder="Task details">
+            <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+            <mat-hint align="end">{{message.value.length}} / 256</mat-hint>        </mat-form-field>
+    </form>
+
+</div>
+ 
+
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProduct()">{{actionBtn}}</button>     
+</div>
+
+
+
+
